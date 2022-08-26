@@ -12,33 +12,33 @@
 //String
 let nome = 'Igor';
 // nome = 21
-console.log(nome)
+
 
 //Numbers
 let idade = 27;
 // idade = 'Igor'
-console.log(idade)
+
 
 //Boolean
 let possuiHobbies = false;
 // possuiHobbies = 12;
-console.log(possuiHobbies)
+
 
 //any - qualquer variável que receba o valor explicitamente ou que seja declarada sem tipo e valor
 let variavel;
 let var2: any = 1;
 var2 = '1';
-console.log(variavel+", "+ var2)
+
 
 //Array
 let hobbies: string[] = ['Cozinhar', 'Praticar Esportes'];
 hobbies.push('Igor')
-console.log(hobbies)
+
 
 
 //Tuplas - É um tipo de array onde o número exato de elementos é definido previamente
 let endereco: [string, number] = ["Av Principal", 99]
-console.log(endereco)
+
 
 
 //Enum - Enumeração | Estrutura com valores pré definidos, por exemplo os dias da semana.
@@ -67,7 +67,7 @@ function multiplicar(X: number, Y:number):number{ //recebe e retorna numbers
 let calculo: (x: number, y:number) => number; //Calculo recebe uma função que recebe numbers e retorna numbers
 calculo = multiplicar;
 // calculo = []
-console.log(calculo(2, 4))
+
 
 
 //Objetos
@@ -103,3 +103,42 @@ objDesafio = {
     }
 };
 console.log(objDesafio.batePonto(10));
+
+
+
+//ALIAS - Tipo personalizado
+
+type Funcionario = {
+    nomeSupervisores: string[],
+    nome: string,
+    sobrenome: string,
+    batePonto: (hora: number) => string
+}
+let funcionario1: Funcionario ={
+    nomeSupervisores: ['Ronaldo', 'Ricardo'],
+    nome:'Igor',
+    sobrenome:'Silva',
+    batePonto: hora=> hora<=8?'Dentro do horário':'Fora do horário',
+}
+console.log(funcionario1.batePonto(8))
+
+
+
+//UNION TYPES
+let nota: number | string = 10; //a variável pode ser ou number ou string
+
+
+//TIPO NEVER
+function falha(msg: string): never{ //O tipo never, na função, geralmente se usa quando a função não possui um 'reachable point'
+    throw new Error(msg)
+}
+let umNome = 'Silva';
+if(umNome !== 'Igor'){
+    const resultado = falha('Não é o Igor')
+    // console.log(resultado)
+}
+
+
+
+
+
