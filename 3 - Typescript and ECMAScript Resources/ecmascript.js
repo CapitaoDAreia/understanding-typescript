@@ -1,3 +1,12 @@
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
 /*
     LET, CONST, VAR
     Let - não sofre hoisting e pertence ao escopo no qual foi declarada.
@@ -34,3 +43,40 @@ falarCom('Igor');
 falarCom3('Igor');
 //Percea agora que em uma arrowFunction o this recebido funciona da mesma forma que na função padrão, com 
 //a diferença que o this de uma arrow é imutável
+/*
+    REST & SPREAD
+
+
+*/
+var numbers = [1, 10, 99, -5];
+var numbers2 = Math.max.apply(Math, numbers);
+//A função MAX recebe os elementos do array com o spread operator.
+var turmaA = ['João', 'Maria', 'Igor'];
+var turmaB = __spreadArray(['Lucas', 'Larissa'], turmaA, true);
+//O array turmaB recebe os elementos do array turmaA com o spread operator.
+function retornaArray() {
+    var args = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        args[_i] = arguments[_i];
+    }
+    return args; //<-- esse retorno é um array
+}
+var numeros = retornaArray(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+//A função retorna array recebe parâmetros indefinidos por meio do operador args, todos tipados, além de possuir retorno tipado.
+var tupla = [1, 'abc', false];
+function tuplaParam1(a, b, c) {
+    console.log("1) ".concat(a, ", ").concat(b, ", ").concat(c));
+}
+tuplaParam1.apply(void 0, tupla);
+//Neste exemplo, perceba que uma função que recebe parâmetros específicos está recebendo uma tupla com elementos específicos, de mesmo tipo
+//esperado e na mesma ordem esperada. 
+function tuplaParam2() {
+    var params = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        params[_i] = arguments[_i];
+    }
+    console.log("2) ".concat(params[0], ", ").concat(params[1], ", ").concat(params[2]));
+}
+tuplaParam2.apply(void 0, tupla);
+//Neste exemplo as coisas acontecem de forma semelhante ao anterior, mas os parâmetros estão sendo recebidos com spread
+//especificando os três tipos esperados, sendo o parâmetro recebido tratado como um array.
