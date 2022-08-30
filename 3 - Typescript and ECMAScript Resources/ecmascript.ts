@@ -75,3 +75,35 @@ function tuplaParam2(...params: [number, string, boolean]){
 tuplaParam2(...tupla)
 //Neste exemplo as coisas acontecem de forma semelhante ao anterior, mas os parâmetros estão sendo recebidos com spread
 //especificando os três tipos esperados, sendo o parâmetro recebido tratado como um array.
+
+
+
+/*
+    DESTRUCTURING
+
+
+*/
+const caracteristicas = ['Motor 1.8', 2020, "3 elemento", "4 elemento"];
+const [motor, ano, terceiro] = caracteristicas;
+//perceba que se declaram as variáveis enquanto se atribui os valores do array nestas.
+//Se o array possui 4 elementos e eu declarar 3 variáveis, eu somente atribuo valores
+//do array em 3 variáveis, e assim sucessivamente.
+
+
+const item = {
+    nome: 'SSD',
+    preco: 200,
+    caracteristicas: {
+        cor: 'preto',
+        modelo: 'I32',
+        familia: '3RC', 
+        ramo:{
+            linha: '32'
+        }
+    },
+    lojas: ['Americanas', 'Magalu']
+}
+
+const {nome: n, preco: p, caracteristicas: { ramo: { linha: line } }} = item;
+console.log(n, p, line)
+//perceba que, usando a técnica de desestruturação, acessamos as propriedades de um objeto e as atribuímos em variáveis.

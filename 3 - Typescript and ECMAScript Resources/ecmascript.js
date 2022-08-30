@@ -80,3 +80,29 @@ function tuplaParam2() {
 tuplaParam2.apply(void 0, tupla);
 //Neste exemplo as coisas acontecem de forma semelhante ao anterior, mas os parâmetros estão sendo recebidos com spread
 //especificando os três tipos esperados, sendo o parâmetro recebido tratado como um array.
+/*
+    DESTRUCTURING
+
+
+*/
+var caracteristicas = ['Motor 1.8', 2020, "3 elemento", "4 elemento"];
+var motor = caracteristicas[0], ano = caracteristicas[1], terceiro = caracteristicas[2];
+//perceba que se declaram as variáveis enquanto se atribui os valores do array nestas.
+//Se o array possui 4 elementos e eu declarar 3 variáveis, eu somente atribuo valores
+//do array em 3 variáveis, e assim sucessivamente.
+var item = {
+    nome: 'SSD',
+    preco: 200,
+    caracteristicas: {
+        cor: 'preto',
+        modelo: 'I32',
+        familia: '3RC',
+        ramo: {
+            linha: '32'
+        }
+    },
+    lojas: ['Americanas', 'Magalu']
+};
+var n = item.nome, p = item.preco, line = item.caracteristicas.ramo.linha;
+console.log(n, p, line);
+//perceba que, usando a técnica de desestruturação, acessamos as propriedades de um objeto e as atribuímos em variáveis.
