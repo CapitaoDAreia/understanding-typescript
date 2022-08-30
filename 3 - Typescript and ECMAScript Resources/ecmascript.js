@@ -67,7 +67,7 @@ var tupla = [1, 'abc', false];
 function tuplaParam1(a, b, c) {
     console.log("1) ".concat(a, ", ").concat(b, ", ").concat(c));
 }
-tuplaParam1.apply(void 0, tupla);
+// tuplaParam1(...tupla)
 //Neste exemplo, perceba que uma função que recebe parâmetros específicos está recebendo uma tupla com elementos específicos, de mesmo tipo
 //esperado e na mesma ordem esperada. 
 function tuplaParam2() {
@@ -77,7 +77,7 @@ function tuplaParam2() {
     }
     console.log("2) ".concat(params[0], ", ").concat(params[1], ", ").concat(params[2]));
 }
-tuplaParam2.apply(void 0, tupla);
+// tuplaParam2(...tupla)
 //Neste exemplo as coisas acontecem de forma semelhante ao anterior, mas os parâmetros estão sendo recebidos com spread
 //especificando os três tipos esperados, sendo o parâmetro recebido tratado como um array.
 /*
@@ -104,5 +104,27 @@ var item = {
     lojas: ['Americanas', 'Magalu']
 };
 var n = item.nome, p = item.preco, line = item.caracteristicas.ramo.linha;
-console.log(n, p, line);
+// console.log(n, p, line)
 //perceba que, usando a técnica de desestruturação, acessamos as propriedades de um objeto e as atribuímos em variáveis.
+/*
+    RESOLUÇÃO DOS EXERCÍCIOS
+
+*/
+//1
+var dobro = function (valor) { return valor * 2; };
+//2
+var dizerOla = function (nome) {
+    if (nome === void 0) { nome = "Pessoa"; }
+    console.log("Ol\u00E1, ".concat(nome));
+};
+dizerOla();
+//3
+var nums = [-3, 33, 38, 5];
+var menor = Math.min.apply(Math, nums);
+//4
+var array = __spreadArray([55, 20], nums, true);
+//5
+var notas = [8.5, 6.3, 9.4];
+var nota1 = notas[0], nota2 = notas[1], nota3 = notas[2];
+var cientista = { primeiroNome: 'Igor', experiencia: 12 };
+var nomeC = cientista.primeiroNome, xp = cientista.experiencia;

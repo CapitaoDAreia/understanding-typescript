@@ -65,14 +65,14 @@ const tupla: [number, string, boolean] = [1, 'abc', false]
 function tuplaParam1(a: number, b: string, c: boolean): void{
     console.log(`1) ${a}, ${b}, ${c}`)
 }
-tuplaParam1(...tupla)
+// tuplaParam1(...tupla)
 //Neste exemplo, perceba que uma função que recebe parâmetros específicos está recebendo uma tupla com elementos específicos, de mesmo tipo
 //esperado e na mesma ordem esperada. 
 
 function tuplaParam2(...params: [number, string, boolean]){
     console.log(`2) ${params[0]}, ${params[1]}, ${params[2]}`);
 }
-tuplaParam2(...tupla)
+// tuplaParam2(...tupla)
 //Neste exemplo as coisas acontecem de forma semelhante ao anterior, mas os parâmetros estão sendo recebidos com spread
 //especificando os três tipos esperados, sendo o parâmetro recebido tratado como um array.
 
@@ -105,5 +105,37 @@ const item = {
 }
 
 const {nome: n, preco: p, caracteristicas: { ramo: { linha: line } }} = item;
-console.log(n, p, line)
+// console.log(n, p, line)
 //perceba que, usando a técnica de desestruturação, acessamos as propriedades de um objeto e as atribuímos em variáveis.
+
+
+
+
+/*
+    RESOLUÇÃO DOS EXERCÍCIOS
+
+*/
+
+//1
+const dobro = (valor: number):number => valor*2;
+
+//2
+const dizerOla = (nome:string = "Pessoa"):void =>{
+    console.log(`Olá, ${nome}`)
+}
+dizerOla()
+
+//3
+const nums = [-3, 33, 38, 5];
+const menor:number = Math.min(...nums);
+
+//4
+const array = [55, 20, ...nums];
+
+
+//5
+const notas = [8.5, 6.3, 9.4];
+const [ nota1, nota2, nota3] = notas;
+
+const cientista = {primeiroNome: 'Igor', experiencia: 12};
+const { primeiroNome: nomeC, experiencia: xp} = cientista;
