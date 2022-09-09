@@ -123,7 +123,7 @@ const dobro = (valor: number):number => valor*2;
 const dizerOla = (nome:string = "Pessoa"):void =>{
     console.log(`Olá, ${nome}`)
 }
-dizerOla()
+// dizerOla()
 
 //3
 const nums = [-3, 33, 38, 5];
@@ -139,3 +139,28 @@ const [ nota1, nota2, nota3] = notas;
 
 const cientista = {primeiroNome: 'Igor', experiencia: 12};
 const { primeiroNome: nomeC, experiencia: xp} = cientista;
+
+
+/*
+    PROMISES
+    Como já visto em Javascript, promises são funções que possuem retorno assíncrono, ou seja, não
+    é certo se e quando o retorno virá.
+    
+*/
+
+// function esperaPromise():Promise<void>{
+//     return new Promise((resolve: any)=>{
+//         setTimeout(()=>{
+//             resolve(console.log('Foi'))
+//         }, 3000)
+//     });
+// }
+//Repare que essa função retorna uma promise, que por sua vez é um tipo de função onde temos a resolução e rejeição.
+//A resolução significa que o retorno da promise é bem sucedido, já a rejeição o contrário.
+
+fetch('https://swapi.co/api/people/1')
+    .then(res => console.log(res))
+    .catch(error => console.log(error) )
+
+//Neste caso, basicamente a mesma coisa é feita. A diferença é que o retorno é implícito e utilizamos as arrows.
+//O fetch faz uma requisição e obtemos seu retorno atráves do THEN e do CATCH.
