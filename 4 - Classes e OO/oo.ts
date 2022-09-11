@@ -17,7 +17,7 @@ class Data {
     }
 }
 const aniversario = new Data(25);
-console.log(aniversario.dia+"/0"+aniversario.mes+"/"+aniversario.ano)
+// console.log(aniversario.dia+"/0"+aniversario.mes+"/"+aniversario.ano)
 
 //De forma mais simples, temos a mesma coisa:
 class DataSimplificada {
@@ -50,4 +50,36 @@ class Produto{
 
 const p1 = new Produto('KitKat', 2.00, 0.1);
 const p2 = new Produto('Banana', 0.99)
-console.log(p1.resumo())
+// console.log(p1.resumo())
+
+
+/*
+    Modificadores de acesso
+
+*/
+
+class Homem{
+    constructor(
+        private nome: string, 
+        private altura: number, 
+        private forca: number
+    ){};
+
+    getCaracteristicas():string{
+        return `${this.nome}, mede ${this.altura} e tem força de ${this.forca}`
+    }
+
+   setNome(nome: string):string{
+        this.nome = nome;
+        return `Nome alterado para ${nome}`
+   }
+
+   setAltura(altura: number):string{
+        this.altura = altura;
+        return `Altura alterada para ${altura}`
+   }
+}
+
+const homem1 = new Homem('Igor', 181, 60);
+
+console.log(homem1.getCaracteristicas())
