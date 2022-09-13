@@ -54,7 +54,14 @@ const p2 = new Produto('Banana', 0.99)
 
 
 /*
-    Modificadores de acesso
+    *Modificadores de acesso
+    private, public
+
+    *getter e setter
+
+    *static
+
+    *protected
 
 */
 
@@ -65,8 +72,8 @@ class Homem{
         private forca: number
     ){};
 
-    getCaracteristicas():string{
-        return `${this.nome}, mede ${this.altura} e tem força de ${this.forca}`
+    get Caracteristicas():string{ 
+        return `${this.nome}, mede ${this.altura} e tem força de ${this.forca}.`
     }
 
    setNome(nome: string):string{
@@ -78,8 +85,66 @@ class Homem{
         this.altura = altura;
         return `Altura alterada para ${altura}`
    }
+
+   getMethods():string{
+        return `Essa classe possui ${this.metodoPrivado()} e também ${this.metodoProtegido()}`
+   }
+
+   private metodoPrivado():string{ //impossível acessar diretamente
+    this.nome = 'Alterado para privado'
+    return `Retorno privado teste`
+   }
+
+   protected metodoProtegido():string{ //impossível acessar fora da classe ou de qualquer classe que a extenda
+    return `Retorno protected teste`
+   }
+
+   static getPensamentos(nome:string):string{ //método acessível apenas na classe
+        return `${nome} pensa em coisas demais...`
+        //O this não funciona aqui pois se trata da classe em si, não de um objeto construído apartir dela.
+        //Logo, o this.nome ainda não possui valor, sendo ele inexistente.
+   }
+
+}
+
+class Homem2 extends Homem{
+    constructor(nome:string, altura:number, forca:number){
+        super(nome, altura, forca)
+    }
 }
 
 const homem1 = new Homem('Igor', 181, 60);
+const homem2 = new Homem2('Silva', 181, 60);
+// homem1.nome = 'Daniel' //Não permitido e incoerente
+// homem1.setNome('Daniel') //Permitido e coerente
+// console.log(homem1.getMethods());
+// console.log(homem2.metodoPrivado());
+// console.log(homem1.Caracteristicas)
+// console.log(Homem.getPensamentos('Igor'))
 
-console.log(homem1.getCaracteristicas())
+
+
+
+
+/*
+    Classe Abstrata
+    É uma classe que não pode ser instanciada, servindo para ser herdada somente.
+*/
+
+abstract class Classe1{
+    constructor(public prop1:string, public prop2:string){}
+
+    getProps(){
+        return this.prop1+" e "+this.prop2
+    }
+}
+
+// const testClasse1 = new Classe1() - REPARE O ERRO, É IMPOSSÍVEL CRIAR INSTÂNCIAS DE CLASSES ABSTRATAS
+
+class Classe2 extends Classe1{
+    constructor(public prop1:string, prop2:string){
+        super(prop1, prop2)
+    }
+}
+
+//Observe que podemos estender a Classe1, mas não instanciá-la
