@@ -148,3 +148,25 @@ class Classe2 extends Classe1{
 }
 
 //Observe que podemos estender a Classe1, mas não instanciá-la
+
+
+
+class Animal{
+    constructor(
+        public readonly name: string,
+        private habits: string
+    ){}
+
+    action():string{
+        return `${this.name} possui ${this.habits} como hábito.`
+    }
+}
+
+const onca = new Animal('Onça', 'Caça');
+// onca.name = 'Macaco';
+//Veja o erro, pois estou tentando escrever em uma propriedade que é somente leitura.
+
+
+/*
+    FIM
+*/
