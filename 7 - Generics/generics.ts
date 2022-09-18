@@ -155,7 +155,15 @@ class Myfila extends Fila<string>{
 
 const umaFila = new Myfila(['Elemento1', 'Elemento2']);
 
-console.log(umaFila.entrar('Elemento3'))
-console.log(umaFila.entrar('Elemento4'))
-console.log(umaFila.proximo())
-console.log(umaFila.imprimir())
+console.log(umaFila.entrar('Elemento3'));
+console.log(umaFila.entrar('Elemento4'));
+console.log(umaFila.proximo());
+console.log(umaFila.imprimir());
+
+
+
+
+//--------------------------------------------------------------------------------------------------------------------------------------
+
+
+
