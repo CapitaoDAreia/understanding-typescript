@@ -1,7 +1,14 @@
 /*
     DECORATORS
 
-    Ainda não entendi bem o que são e nem para que servem os decorators.
+    Estou começando a entender o que são decorators.
+    São espécies de funções que ajudam a "decorar"/modificar o comportamento de classes, métodos e propriedades.
+
+    A função que constrói o MethodDecorator leva três argumentos padrões:
+        -target: método/função/classe a ser decorado
+        -key: o nome do método/função/classe que está sendo decorado
+        -value: o descritor da propriedade/função/classe dada se existir no objeto, ou será undefined caso não exista. O descritor da propriedade/função/classe é obtido baseado na função
+        Object.getOwnPropertyDescriptor()
 */
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -22,3 +29,40 @@ let Eletrodomesticos = class Eletrodomesticos {
 Eletrodomesticos = __decorate([
     decoratorEletrodomesticos //Usando decorator na classe, associando a classe à função decorator
 ], Eletrodomesticos);
+//--------------------------------------------------------------------------------------------------
+/*
+    TESTES
+*/
+function log(prefix) {
+    return (target) => {
+        console.log(`${prefix} ${target}`);
+        console.log(target);
+    };
+}
+let Foo = class Foo {
+};
+Foo = __decorate([
+    log('Prefixo')
+], Foo);
+function handleDecorator(target, key) {
+    console.log(target, key);
+}
+class TestandoDecorators {
+    constructor(mainInfo) {
+        this.mainInfo = 'MaiInfo';
+    }
+}
+__decorate([
+    handleDecorator
+], TestandoDecorators.prototype, "mainInfo", void 0);
+function analyze(target, key) {
+    console.log(target, key);
+}
+class Task {
+    constructor(title) {
+        this.title = title;
+    }
+}
+__decorate([
+    analyze
+], Task.prototype, "title", void 0);
