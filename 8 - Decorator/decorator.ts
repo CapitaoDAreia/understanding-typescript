@@ -101,3 +101,21 @@ new MinhaTerceiraClasse();
 
     Sempre que a classe decorada for instanciada, a classe anônima será retornada gerando uma herança da classe decorada estendendo-a.
 */
+
+//---------------------------------------------------------------------------------------------------------------
+
+
+function BaseEntity(target: Function): void{
+    // target extends NewUser{}
+    target.prototype.id = '123'
+    target.prototype.seiLaOque = 'Sei lá o que'
+}
+
+@BaseEntity
+class NewUser{
+    constructor(public name: string = 'New User Constructor'){
+        console.log(`Inicializando a ${this.name}`)
+    }
+}
+
+console.log(new NewUser)
